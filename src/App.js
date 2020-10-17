@@ -1,35 +1,58 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //Components
 import Welcome from "./components/pages/Welcome";
 import QuestionForm from "./components/pages/QuestionForm";
 import Display from "./components/pages/Display";
+import Edit from "./components/pages/Edit";
 //Stying
 import "./App.css";
 
 const App = () => {
+  const [ready, setReady] = useState("False");
   const [quizInfo, setQuizInfo] = useState({
     quizName: "",
     author: "",
     numberOfQs: "",
-    ready: false,
     questionsMade: false,
   });
   const [questions, setQuestions] = useState([]);
 
   return (
     <div className="App">
-      {quizInfo.ready !== true && quizInfo.questionsMade !== true ? (
-        <Welcome setQuizInfo={setQuizInfo} quizInfo={quizInfo} />
-      ) : quizInfo.ready === true && quizInfo.questionsMade !== true ? (
-        <QuestionForm
-          quizInfo={quizInfo}
-          questions={questions}
-          setQuestions={setQuestions}
-          setQuizInfo={setQuizInfo}
-        />
-      ) : (
-        <Display quizInfo={quizInfo} questions={questions} />
-      )}
+      <Router>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <Welcome
+                quizInfo={quizInfo}
+                setQuizInfo={setQuizInfo}
+                setReady={setReady}
+                ready={ready}
+              />
+            )}
+          />
+          <Route
+            path="/newquiz"
+            render={(props) => (
+              <QuestionForm
+                quizInfo={quizInfo}
+                questions={questions}
+                setQuestions={setQuestions}
+                setQuizInfo={setQuizInfo}
+              />
+            )}
+          />
+          <Route
+            path="/quiz"
+            render={(props) => (
+              <Display quizInfo={quizInfo} questions={questions} />
+            )}
+          />
+        </Switch>
+      </Router>
     </div>
   );
 };

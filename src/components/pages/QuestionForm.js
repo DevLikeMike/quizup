@@ -1,6 +1,8 @@
 import React, { useState, Fragment } from "react";
+import { useHistory } from "react-router-dom";
 
 const QuestionForm = ({ quizInfo, questions, setQuestions, setQuizInfo }) => {
+  const history = useHistory();
   //Deconstruct from props
   const { numberOfQs, author, quizName } = quizInfo;
   //Component State
@@ -57,6 +59,7 @@ const QuestionForm = ({ quizInfo, questions, setQuestions, setQuizInfo }) => {
       //Allow only the right number of submits by incrementing count
       if (count == numberOfQs) {
         setQuizInfo({ ...quizInfo, questionsMade: true });
+        history.push("/quiz");
         done = true;
       } else {
         //Increase count for the key value of the new question

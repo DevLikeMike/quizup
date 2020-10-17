@@ -1,6 +1,10 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
-const Welcome = ({ setQuizInfo, quizInfo }) => {
+const Welcome = (props) => {
+  const { setQuizInfo, quizInfo, setReady, ready } = props;
+  const history = useHistory();
+
   //Event Handling for component
   //Set info(app level state)
   const onChange = (e) => {
@@ -9,7 +13,8 @@ const Welcome = ({ setQuizInfo, quizInfo }) => {
   //Set the ready value to advance to the next page or the quiz creation
   const onSubmit = (e) => {
     e.preventDefault();
-    setQuizInfo({ ...quizInfo, ready: true });
+    setReady(true);
+    history.push("/newquiz");
   };
 
   return (
