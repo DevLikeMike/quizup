@@ -58,7 +58,7 @@ const Welcome = (props) => {
               />
             </div>
             <div className="four columns">
-              <label>How man questions would you like?</label>
+              <label>How many questions would you like?</label>
               <select
                 name="numberOfQs"
                 id="numberOfQs"
