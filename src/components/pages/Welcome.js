@@ -12,6 +12,11 @@ const Welcome = (props) => {
   };
   //Set the ready value to advance to the next page or the quiz creation
   const onSubmit = (e) => {
+    if (quizInfo.numberOfQs === "") {
+      alert("Please select how many questions you would like");
+      return;
+    }
+    console.log(quizInfo.numberOfQs);
     e.preventDefault();
     setReady(true);
     history.push("/newquiz");
