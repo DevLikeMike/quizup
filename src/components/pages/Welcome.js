@@ -2,8 +2,12 @@ import React, { Fragment, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 const Welcome = (props) => {
-  const { setQuizInfo, quizInfo, setReady, ready } = props;
+  const { setQuizInfo, quizInfo, setReady, ready, setQuestions } = props;
   const history = useHistory();
+
+  useEffect(() => {
+    setQuestions([]);
+  }, []);
 
   //Event Handling for component
   //Set info(app level state)
@@ -24,10 +28,10 @@ const Welcome = (props) => {
 
   return (
     <Fragment>
-      <div className="container" id="welcome">
+      <div className='container' id='welcome'>
         <h3>Welcome to QuizUp</h3>
-        <div className="row">
-          <p className="eight columns">
+        <div className='row'>
+          <p className='eight columns'>
             Online quiz maker for all your quizzing needs. Have questions to
             ask? Need Answers fast? Well while you "asking all them questions",
             let quiz up make it easy to generate your quiz! Our quizes provide
@@ -36,60 +40,60 @@ const Welcome = (props) => {
             generator for teachers all over the United States!
           </p>
         </div>
-        <form id="mainForm" onSubmit={onSubmit} autoComplete="off">
-          <div className="row">
-            <div className="eight columns">
+        <form id='mainForm' onSubmit={onSubmit} autoComplete='off'>
+          <div className='row'>
+            <div className='eight columns'>
               <label>Name of your quiz?</label>
               <input
-                type="text"
-                name="quizName"
-                id="quizName"
-                className="u-full-width"
+                type='text'
+                name='quizName'
+                id='quizName'
+                className='u-full-width'
                 onChange={onChange}
                 required
               />
             </div>
           </div>
-          <div className="row">
-            <div className="four columns">
+          <div className='row'>
+            <div className='four columns'>
               <label>Who is making the quiz?</label>
               <input
-                type="text"
-                name="author"
-                id="author"
-                className="u-full-width"
+                type='text'
+                name='author'
+                id='author'
+                className='u-full-width'
                 onChange={onChange}
                 required
               />
             </div>
-            <div className="four columns">
+            <div className='four columns'>
               <label>How many questions would you like?</label>
               <select
-                name="numberOfQs"
-                id="numberOfQs"
-                className="u-full-width"
+                name='numberOfQs'
+                id='numberOfQs'
+                className='u-full-width'
                 onChange={onChange}
               >
-                <option value="">Number of Questions</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-                <option value="4">Four</option>
-                <option value="5">Five</option>
-                <option value="6">Six</option>
-                <option value="7">Seven</option>
-                <option value="8">Eight</option>
-                <option value="9">Nine</option>
-                <option value="10">Ten</option>
+                <option value=''>Number of Questions</option>
+                <option value='1'>One</option>
+                <option value='2'>Two</option>
+                <option value='3'>Three</option>
+                <option value='4'>Four</option>
+                <option value='5'>Five</option>
+                <option value='6'>Six</option>
+                <option value='7'>Seven</option>
+                <option value='8'>Eight</option>
+                <option value='9'>Nine</option>
+                <option value='10'>Ten</option>
               </select>
             </div>
           </div>
-          <div className="row">
-            <div className="eight columns">
+          <div className='row'>
+            <div className='eight columns'>
               <button
-                className="button-primary u-full-width"
-                type="submit"
-                id="submit"
+                className='button-primary u-full-width'
+                type='submit'
+                id='submit'
               >
                 Get Started
               </button>

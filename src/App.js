@@ -4,6 +4,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Welcome from "./components/pages/Welcome";
 import QuestionForm from "./components/pages/QuestionForm";
 import Display from "./components/pages/Display";
+import HomeBtn from "./components/HomeBtn";
 import Edit from "./components/pages/Edit";
 //Stying
 import "./App.css";
@@ -16,26 +17,29 @@ const App = () => {
     numberOfQs: "",
     questionsMade: false,
   });
+  const [grade, setGrade] = useState(0);
   const [questions, setQuestions] = useState([]);
 
   return (
-    <div className="App">
+    <div className='App'>
       <Router>
+        <HomeBtn />
         <Switch>
           <Route
             exact
-            path="/"
+            path='/'
             render={(props) => (
               <Welcome
                 quizInfo={quizInfo}
                 setQuizInfo={setQuizInfo}
                 setReady={setReady}
                 ready={ready}
+                setQuestions={setQuestions}
               />
             )}
           />
           <Route
-            path="/newquiz"
+            path='/newquiz'
             render={(props) => (
               <QuestionForm
                 quizInfo={quizInfo}
@@ -46,7 +50,7 @@ const App = () => {
             )}
           />
           <Route
-            path="/quiz"
+            path='/quiz'
             render={(props) => (
               <Display quizInfo={quizInfo} questions={questions} />
             )}

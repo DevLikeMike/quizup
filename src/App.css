@@ -6,6 +6,11 @@
   flex-direction: column;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 #questionForm {
   margin: 3rem 27%;
   width: 80%;
@@ -103,6 +108,21 @@
 
 .cardWrapper button:hover {
   background-color: #14a3e6;
+}
+
+.home-btn {
+  position: absolute;
+  top: 3rem;
+  left: 5rem;
+  border: 1px solid black;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  color: #000;
+  background-color: #e6e6e6;
+}
+
+.home-btn:hover {
+  background-color: #c2c1c1;
 }
 
 fieldset {
